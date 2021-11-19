@@ -33,7 +33,7 @@ function setup() {
 function draw() {
   background("lightblue");
 
- 
+  if(gameState === PLAY){
     chance.visible =false;
     if(mousePressedOver(coin)){
       coin.addImage(coin2Img);
@@ -42,9 +42,18 @@ function draw() {
       count = count +1
       gameState = END;
     }
-  
+  }
 
-   
+  else if(gameState === END ){
+    textSize(12);
+    fill("red");
+    text("YOU ADDED ONE DOLLAR",0,50);
+    text("Coins = " + count,160,30)
+    chance.visible=true;
+    if(mousePressedOver(chance)){
+      reset()
+    }
+  }
  
   drawSprites();
   
